@@ -12,7 +12,7 @@
 
 <meta name="author" content="Dania M. Rodriguez" />
 
-<meta name="date" content="2017-04-22" />
+<meta name="date" content="2017-04-23" />
 
 <title>dataMeta: Making and appending a data dictionary to an R dataset</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">dataMeta: Making and appending a data dictionary to an R dataset</h1>
 <h4 class="author"><em>Dania M. Rodriguez</em></h4>
-<h4 class="date"><em>2017-04-22</em></h4>
+<h4 class="date"><em>2017-04-23</em></h4>
 
 
 
@@ -83,13 +83,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p> </p>
 <div id="data" class="section level3">
 <h3>Data</h3>
-<p>The data used for this vignette will be obtained from the Centers for Disease Control and Prevention (CDC) github repository for publicly avaiable Zika data: <a href="https://github.com/cdcepi/zika" class="uri">https://github.com/cdcepi/zika</a>. This repo contains Zika data that has been scraped from the published records of the Health Department of various countries. The dataset used contains information related with Zika infection in the United States Virgin Islands (USVI) as published by their Health Department on their <a href="http://doh.vi.gov/assets/documents/2017/010317_ZikaReport.pdf">January 03, 2017 report</a> and can be obtained using the code in <code>my_data.R</code> as shown below. Please, note that the data is read with <code>stringsAsFactors = FALSE</code>. Below is a portion of this dataset:</p>
-<p> </p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path =<span class="st"> &quot;http://raw.githubusercontent.com/cdcepi/zika/master/&quot;</span>
-path2 =<span class="st"> &quot;USVI/USVI_Zika/data/USVI_Zika-2017-01-03.csv&quot;</span>
-url &lt;-<span class="st"> </span><span class="kw">paste0</span>(path, path2, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>)
-
-my.data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(url, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<p>The data used for this vignette will be obtained from the Centers for Disease Control and Prevention (CDC) github repository for publicly avaiable Zika data: <a href="https://github.com/cdcepi/zika" class="uri">https://github.com/cdcepi/zika</a>. This repo contains Zika data that has been scraped from the published records of the Health Department of various countries. The dataset used contains information related with Zika infection in the United States Virgin Islands (USVI) as published by their Health Department on their <a href="http://doh.vi.gov/assets/documents/2017/010317_ZikaReport.pdf">January 03, 2017 report</a> and can be obtained using the code below. Please, note that the data is read with <code>stringsAsFactors = FALSE</code>. Below is a portion of this dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(my.data)
 
 <span class="kw">kable</span>(<span class="kw">head</span>(my.data, <span class="dv">10</span>), <span class="dt">format =</span> <span class="st">&quot;html&quot;</span>, <span class="dt">caption =</span> <span class="st">&quot;Portion of dataset&quot;</span>)</code></pre></div>
 <table>
@@ -420,6 +415,13 @@ cases
 </tr>
 </tbody>
 </table>
+<p> </p>
+<p>Another way to load the data is using it’s raw link from the github repo where it is stored:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path =<span class="st"> &quot;http://raw.githubusercontent.com/cdcepi/zika/master/&quot;</span>
+path2 =<span class="st"> &quot;USVI/USVI_Zika/data/USVI_Zika-2017-01-03.csv&quot;</span>
+url &lt;-<span class="st"> </span><span class="kw">paste0</span>(path, path2, <span class="dt">collapse=</span><span class="st">&quot;&quot;</span>)
+
+my.data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(url, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
 
 </div>
 </div>
@@ -1016,7 +1018,7 @@ $dictionary
 37            value The number of cases per data field type                                 0 to 1930
 
 $last_edit_date
-[1] &quot;2017-04-22 23:14:37 AST&quot;
+[1] &quot;2017-04-23 13:01:05 AST&quot;
 
 $author
 [1] &quot;Dania Rodriguez&quot;</code></pre>

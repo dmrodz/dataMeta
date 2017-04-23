@@ -33,18 +33,24 @@ knitr::include_graphics("dataMeta_workflow.jpg")
   
 ### Data  
   
-  The data used for this vignette will be obtained from the Centers for Disease Control and Prevention (CDC) github repository for publicly avaiable Zika data: https://github.com/cdcepi/zika. This repo contains Zika data that has been scraped from the published records of the Health Department of various countries. The dataset used contains information related with Zika infection in the United States Virgin Islands (USVI) as published by their Health Department on their [January 03, 2017 report](http://doh.vi.gov/assets/documents/2017/010317_ZikaReport.pdf) and can be obtained using the code in `my_data.R` as shown below. Please, note that the data is read with `stringsAsFactors = FALSE`.  Below is a portion of this dataset:  
+  The data used for this vignette will be obtained from the Centers for Disease Control and Prevention (CDC) github repository for publicly avaiable Zika data: https://github.com/cdcepi/zika. This repo contains Zika data that has been scraped from the published records of the Health Department of various countries. The dataset used contains information related with Zika infection in the United States Virgin Islands (USVI) as published by their Health Department on their [January 03, 2017 report](http://doh.vi.gov/assets/documents/2017/010317_ZikaReport.pdf) and can be obtained using the code below. Please, note that the data is read with `stringsAsFactors = FALSE`.  Below is a portion of this dataset:  
+  
+```{r message = FALSE, warning = FALSE}
+data(my.data)
+
+kable(head(my.data, 10), format = "html", caption = "Portion of dataset")
+```  
   
 &nbsp;  
   
-```{r message = FALSE, warning = FALSE}
+  Another way to load the data is using it's raw link from the github repo where it is stored:  
+  
+```{r eval = FALSE, message = FALSE, warning = FALSE}
 path = "http://raw.githubusercontent.com/cdcepi/zika/master/"
 path2 = "USVI/USVI_Zika/data/USVI_Zika-2017-01-03.csv"
 url <- paste0(path, path2, collapse="")
 
 my.data <- read.csv(url, header = TRUE, stringsAsFactors = FALSE)
-
-kable(head(my.data, 10), format = "html", caption = "Portion of dataset")
 ```  
   
 \newpage  

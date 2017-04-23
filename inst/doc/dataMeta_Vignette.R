@@ -8,13 +8,16 @@ opts_chunk$set(size = 'small', comment = NA, tidy = FALSE)
 knitr::include_graphics("dataMeta_workflow.jpg")
 
 ## ----message = FALSE, warning = FALSE-----------------------------------------------------------------------
-path = "http://raw.githubusercontent.com/cdcepi/zika/master/"
-path2 = "USVI/USVI_Zika/data/USVI_Zika-2017-01-03.csv"
-url <- paste0(path, path2, collapse="")
-
-my.data <- read.csv(url, header = TRUE, stringsAsFactors = FALSE)
+data(my.data)
 
 kable(head(my.data, 10), format = "html", caption = "Portion of dataset")
+
+## ----eval = FALSE, message = FALSE, warning = FALSE---------------------------------------------------------
+#  path = "http://raw.githubusercontent.com/cdcepi/zika/master/"
+#  path2 = "USVI/USVI_Zika/data/USVI_Zika-2017-01-03.csv"
+#  url <- paste0(path, path2, collapse="")
+#  
+#  my.data <- read.csv(url, header = TRUE, stringsAsFactors = FALSE)
 
 ## ----warning = FALSE, message = FALSE-----------------------------------------------------------------------
 var_desc <- c("Date when report was published", "Regional location", 
