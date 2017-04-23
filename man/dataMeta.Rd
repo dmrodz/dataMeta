@@ -4,11 +4,11 @@
 \name{dataMeta}
 \alias{dataMeta}
 \alias{dataMeta-package}
-\title{dataMeta: A package constructing a data dictionary and add it as metadata to a tidy dataset's attributes, along with other attributes.}
+\title{dataMeta: An R package to create and append a data dictionary for an R dataset}
 \description{
 The dataMeta package provides three main functions:
 build_linker, build_dict and incorporate_attr. The build_linker and incorporate_attr functions have prompt options called:
-prompt_linker and prompt_attr respectively.
+prompt_linker and prompt_attr, respectively.
 }
 \section{dataMeta functions}{
 
@@ -17,5 +17,6 @@ prompt_linker This function is an alternate function to build the linker. It wil
 build_dict This function will build a data dictionary using the linker and the original dataset.
 incorporate_attr This function will incorporate the data dictionary that is created with the build_dict option into the R dataset as an attribute, along with other metadata that may be needed.
 prompt_attr This function will prompt the user for options related to the metadata that will be added to the R dataset. This is an alternative to the incorporate_attr function.
+save_it This function will save your new data with its attributes as an R dataset.
 }
 

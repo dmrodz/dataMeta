@@ -1,8 +1,8 @@
-#' dataMeta: A package constructing a data dictionary and add it as metadata to a tidy dataset's attributes, along with other attributes.
+#' dataMeta: An R package to create and append a data dictionary for an R dataset
 #'
 #' The dataMeta package provides three main functions:
 #' build_linker, build_dict and incorporate_attr. The build_linker and incorporate_attr functions have prompt options called:
-#' prompt_linker and prompt_attr respectively.
+#' prompt_linker and prompt_attr, respectively.
 #' 
 #' @section dataMeta functions:
 #' build_linker This function will  build a data frame that will serve as a link between your dataset to the creation of the data dictionary.
@@ -10,6 +10,7 @@
 #' build_dict This function will build a data dictionary using the linker and the original dataset.
 #' incorporate_attr This function will incorporate the data dictionary that is created with the build_dict option into the R dataset as an attribute, along with other metadata that may be needed.
 #' prompt_attr This function will prompt the user for options related to the metadata that will be added to the R dataset. This is an alternative to the incorporate_attr function.
+#' save_it This function will save your new data with its attributes as an R dataset.
 #' 
 #'
 #' @docType package
