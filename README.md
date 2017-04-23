@@ -14,7 +14,7 @@ library(devtools)
 install_github("dmrodz/dataMeta")
 ```
 
-### Feel free to view the [vignette](http://htmlpreview.github.io/?https://github.com/dmrodz/dataMeta/blob/master/vignettes/dataMeta_Vignette.html)!  
+### Feel free to view the [vignette](http://htmlpreview.github.io/?https://github.com/dmrodz/dataMeta/blob/master/inst/doc/dataMeta_Vignette.html)!  
   
 <b> dataMeta workflow </b>
   
