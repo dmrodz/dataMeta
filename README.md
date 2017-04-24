@@ -14,6 +14,12 @@ library(devtools)
 install_github("dmrodz/dataMeta")
 ```
 
+<b>Install dataMeta in R from CRAN:</b>  
+
+```
+install.packages("dataMeta")
+```  
+
 ### Feel free to view the [vignette](http://htmlpreview.github.io/?https://github.com/dmrodz/dataMeta/blob/master/inst/doc/dataMeta_Vignette.html)!  
   
 <b> dataMeta workflow </b>
