@@ -1,4 +1,4 @@
-#' dataMeta: An R package to create and append a data dictionary for an R dataset
+#' dataMeta: Create and Append a Data Dictionary for an R Dataset
 #'
 #' The dataMeta package provides three main functions:
 #' build_linker, build_dict and incorporate_attr. The build_linker and incorporate_attr functions have prompt options called:
