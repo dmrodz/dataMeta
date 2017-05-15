@@ -118,15 +118,17 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
      colnames(data.dictionary) <- c("variable name", 
                                     "variable description", 
                                     "variable options", 
-                                    "option description")
+                                    "notes")
      data.dictionary
      
    } else if(prompt_varopts && is.null(option_description)) {
      
-     for(i in 1:nrow(dictdf)) {
+     for(i in 1:nrow(dict_df)) {
        
-       varopt <- dictdf$option_desc[i]
-       opts <- paste0("Enter description for option '", varopt, sep="': ")
+       varopt <- dict_df$variable_options[i]
+       varname <- dict_df$variable_name[i]
+       opts <- paste0("Enter description for variable '", 
+                      varname, sep="' and option '", varopt, sep="': ")
        
        dictdf$option_desc[i] <- readline(opts)
        
@@ -137,7 +139,7 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
      colnames(data.dictionary) <- c("variable name", 
                                     "variable description", 
                                     "variable options", 
-                                    "option description")
+                                    "notes")
      
      data.dictionary
      
