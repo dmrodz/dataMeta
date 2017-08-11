@@ -1,10 +1,13 @@
 Package: dataMeta
-Title: Create and Append a Data Dictionary for an R Dataset 
-Version: 0.1.0
-Authors@R: person("Dania M.", "Rodriguez", email = "dmrodz@gmail.com", role = c("aut", "cre"))
+Title: Create and Append a Data Dictionary for an R Dataset
+Date: 2017-08-11
+Version: 0.1.1
+Authors@R: c(person("Dania M.", "Rodriguez", email = "dmrodz@gmail.com", role = c("aut", "cre")),
+             person("P3S Corporation", role = "cph")
+            )
 Description: Designed to create a basic data dictionary and append to the original dataset's attributes list. The package makes use of a tidy dataset and creates a data frame that will serve as a linker that will aid in building the dictionary. The dictionary is then appended to the list of the original dataset's attributes. The user will have the option of entering variable and item descriptions by writing code or use alternate functions that will prompt the user to add these.
 Depends: R (>= 3.3.2)
-License: GPL-3
+License: GPL-3 + file LICENSE
 URL: https://github.com/dmrodz/dataMeta
 BugReports: https://github.com/dmrodz/dataMeta/issues
 Encoding: UTF-8
