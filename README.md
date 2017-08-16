@@ -6,15 +6,16 @@ Datasets generally require a data dictionary that will incorporate information r
 Suggestions are most welcome!
 ```
 
-<b>Install dataMeta in R from GitHub using devtools:</b>
-
+<b>Install dataMeta from GitHub (v0.1.1.9000) using devtools:</b>  
+  
+     last_update: ongoing
 ```
 install.packages("devtools")
 library(devtools)
 install_github("dmrodz/dataMeta")
 ```
 
-<b>Install dataMeta in R from CRAN:</b>  
+<b>Install dataMeta v0.1.1 from CRAN:</b>  
 
 ```
 install.packages("dataMeta")
