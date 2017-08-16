@@ -1,7 +1,7 @@
 Package: dataMeta
 Title: Create and Append a Data Dictionary for an R Dataset
 Date: 2017-08-11
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: c(person("Dania M.", "Rodriguez", email = "dmrodz@gmail.com", role = c("aut", "cre")),
              person("P3S Corporation", role = "cph")
             )
