@@ -16,6 +16,8 @@
 #' @param prompt_varopts Logical. Whether to add the option_description manually 
 #' as prompted by R. Default is set to TRUE. If FALSE, an option_description vector 
 #' must be provided.
+#' @param na.rm Logical. Whether to remove \code{NA} when determining the range 
+#' for variables with \code{variable_type == 0} in \code{linker}
 #' @return A data frame that will serve as a data dictionary for an original dataset. 
 #' The user will have the option to add this dictionary as an attribute to the original 
 #' dataset with the other package functions.
@@ -42,7 +44,8 @@
 #' 
 #' @export
 
-build_dict <- function(my.data, linker, option_description = NULL, prompt_varopts = TRUE) {
+build_dict <- function(my.data, linker, option_description = NULL, prompt_varopts = TRUE,
+                       na.rm = FALSE) {
   
   error1 <- FALSE
   error2 <- FALSE
@@ -57,7 +60,7 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
     
     var.options = 
       ifelse(linker$var_type[i] == 1 & linker$var_name[i] == names(my.data[i]), 
-             unique(my.data[i]), paste(range(my.data[, i], na.rm = FALSE), 
+             unique(my.data[i]), paste(range(my.data[, i], na.rm = na.rm), 
                                        sep = "", collapse = " to "))
     
     d <- data.frame(

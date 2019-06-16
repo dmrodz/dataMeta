@@ -5,7 +5,7 @@
 \title{Build a data dictionary for a dataset.}
 \usage{
 build_dict(my.data, linker, option_description = NULL,
-  prompt_varopts = TRUE)
+  prompt_varopts = TRUE, na.rm = FALSE)
 }
 \arguments{
 \item{my.data}{Data.frame. The data set for which the user is creating the 
@@ -23,6 +23,9 @@ this value must be NULL.}
 \item{prompt_varopts}{Logical. Whether to add the option_description manually 
 as prompted by R. Default is set to TRUE. If FALSE, an option_description vector 
 must be provided.}
+
+\item{na.rm}{Logical. Whether to remove \code{NA} when determining the range 
+for variables with \code{variable_type == 0} in \code{linker}}
 }
 \value{
 A data frame that will serve as a data dictionary for an original dataset. 
