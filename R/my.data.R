@@ -16,7 +16,7 @@
 #'   \item{data_field_code}{A code to identify the data_field}
 #'   \item{time_period}{The time period of the cases}
 #'   \item{time_period_type}{The units of the time period}
-#'   \item{value}{The number of observations under a specificc data_field}
+#'   \item{value}{The number of observations under a specific data_field}
 #'   \item{unit}{The unit of the number of observations, cases, municipalities...}
 #'   }
 #'
