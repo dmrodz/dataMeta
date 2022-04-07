@@ -4,16 +4,21 @@
 \alias{build_dict}
 \title{Build a data dictionary for a dataset.}
 \usage{
-build_dict(my.data, linker, option_description = NULL,
-  prompt_varopts = TRUE, na.rm = FALSE)
+build_dict(
+  my.data,
+  linker,
+  option_description = NULL,
+  prompt_varopts = TRUE,
+  na.rm = FALSE
+)
 }
 \arguments{
 \item{my.data}{Data.frame. The data set for which the user is creating the 
 dictionary for.}
 
 \item{linker}{Data.frame. A data frame that has the variable names from the 
-original dataset, and also a avriable type that will tell the dictionary whether 
-to list unique item options or a range of values for each variable name.}
+original dataset, and also a variable type that will tell the dictionary whether 
+to list unique item options or--if possible--a range of values for each variable name.}
 
 \item{option_description}{A vector that has the description of each variable 
 option in the order in which these appear and depending on how the variable type 

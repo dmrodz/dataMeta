@@ -7,8 +7,8 @@
 #' @param my.data Data.frame. The data set for which the user is creating the 
 #' dictionary for.
 #' @param linker Data.frame. A data frame that has the variable names from the 
-#' original dataset, and also a avriable type that will tell the dictionary whether 
-#' to list unique item options or a range of values for each variable name.
+#' original dataset, and also a variable type that will tell the dictionary whether 
+#' to list unique item options or--if possible--a range of values for each variable name.
 #' @param option_description A vector that has the description of each variable 
 #' option in the order in which these appear and depending on how the variable type 
 #' was set while building the linker data frame. If using the prompt_varopts option, 
@@ -55,13 +55,24 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
   variable_options <- NULL
   
   data_list = list()
+
+  classes = unname(sapply(my.data, function(x) {
+    class(x)[1]
+  }))
   
   for(i in 1:length(names(my.data))) {
     
-    var.options = 
-      ifelse(linker$var_type[i] == 1 & linker$var_name[i] == names(my.data[i]), 
-             unique(my.data[i]), paste(range(my.data[, i], na.rm = na.rm), 
-                                       sep = "", collapse = " to "))
+    var.options <-
+      ifelse(linker$var_type[i] == 1 & linker$var_name[i] == names(my.data[i]),
+        unique(my.data[i]),
+        # create ranges where possible
+        ifelse(classes[i] %in% c("numeric", "integer"),
+          paste(range(my.data[, i], na.rm = na.rm),
+            sep = "", collapse = " to "
+          ),
+          ""
+        )
+      )
     
     d <- data.frame(
           variable_name = names(my.data[i]),
