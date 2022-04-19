@@ -54,14 +54,28 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
   variable_description <- NULL
   variable_options <- NULL
   
+  getRange <- function(this.var) {
+      ifelse(is.factor(this.var) == TRUE & is.ordered(this.var) == FALSE,
+             paste(range(factor(this.var, ordered = TRUE), na.rm = na.rm), 
+                   sep = "", collapse = " to "),
+      ifelse(is.logical(this.var) == TRUE | is.complex(this.var) == TRUE,
+             paste(range(as.character(this.var), na.rm = na.rm), sep = "", 
+                   collapse = " to "),
+             paste(range(this.var, na.rm = na.rm), sep = "", collapse = " to ")))
+  }    
+  
   data_list = list()
   
   for(i in 1:length(names(my.data))) {
     
-    var.options = 
-      ifelse(linker$var_type[i] == 1 & linker$var_name[i] == names(my.data[i]), 
-             unique(my.data[i]), paste(range(my.data[, i], na.rm = na.rm), 
-                                       sep = "", collapse = " to "))
+    if(linker$var_type[i] == 1 & linker$var_name[i] == names(my.data[i])) {
+      my.data[, i] <- as.character(my.data[, i])
+      var.options = data.frame(unique(my.data[i]), stringsAsFactors = FALSE)
+      var.options <- stats::na.omit(var.options)
+      var.options[, 1] <- as.character(var.options[, 1])
+    } else {
+      var.options = paste(getRange(my.data[, i]), sep = "", collapse = " to ")
+    }    
     
     d <- data.frame(
           variable_name = names(my.data[i]),
@@ -71,21 +85,21 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
     
     d$i <- i
     data_list[[i]] <- d
-    colnames(data_list[[i]]) <- c("variable_name", "variable_options", "i")
+    colnames(data_list[[i]]) <- c("variable_name", "variable_options", "var_order")
     
     dict = do.call(rbind, data_list)
     
     dict <- as.data.frame(dict)
-    dict <- dplyr::select(dict, -i)
-    
   }
   
    # dict
    colnames(linker) <- c("variable_name", "variable_description", "var_type")
    
    dict_df <- Reduce(function(...) merge(..., all = TRUE), list(dict, linker))
-   dict_df <- dplyr::select(dict_df, variable_name, variable_description,
+   dict_df <- dplyr::select(dict_df, var_order, variable_name, variable_description,
                             variable_options)
+   
+   dict_df <- dplyr::arrange(dict_df, var_order)   
    
    dictdf <- dplyr::mutate(
      dict_df,
@@ -95,6 +109,7 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
                                    as.character(variable_description))
    )
    
+   dictdf <- dictdf[-1]
    dictdf <- as.data.frame(dictdf)
    
    
