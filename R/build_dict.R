@@ -80,12 +80,14 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
     d <- data.frame(
           variable_name = names(my.data[i]),
           variable_options = var.options,
+          variable_class = class(my.data[, i]),
           stringsAsFactors = FALSE
     )
     
     d$i <- i
     data_list[[i]] <- d
-    colnames(data_list[[i]]) <- c("variable_name", "variable_options", "var_order")
+    colnames(data_list[[i]]) <- c("variable_name", "variable_options", 
+                                  "variable_class", "var_order")
     
     dict = do.call(rbind, data_list)
     
@@ -96,14 +98,16 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
    colnames(linker) <- c("variable_name", "variable_description", "var_type")
    
    dict_df <- Reduce(function(...) merge(..., all = TRUE), list(dict, linker))
-   dict_df <- dplyr::select(dict_df, var_order, variable_name, variable_description,
-                            variable_options)
+   dict_df <- dplyr::select(dict_df, var_order, variable_name, variable_class, 
+                            variable_description, variable_options)
    
    dict_df <- dplyr::arrange(dict_df, var_order)   
    
    dictdf <- dplyr::mutate(
      dict_df,
      variable_name = ifelse(duplicated(variable_name), " ", as.character(variable_name)),
+     
+     variable_class = ifelse(duplicated(variable_class), " ", as.character(variable_class)),     
      
      variable_description = ifelse(duplicated(variable_description), " ",
                                    as.character(variable_description))
@@ -134,6 +138,7 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
      data.dictionary <- df
      
      colnames(data.dictionary) <- c("variable name", 
+                                    "variable class",
                                     "variable description", 
                                     "variable options", 
                                     "notes")
@@ -155,6 +160,7 @@ build_dict <- function(my.data, linker, option_description = NULL, prompt_varopt
      data.dictionary <- dictdf
      
      colnames(data.dictionary) <- c("variable name", 
+                                    "variable class",
                                     "variable description", 
                                     "variable options", 
                                     "notes")
