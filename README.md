@@ -6,7 +6,7 @@ Datasets generally require a data dictionary that will incorporate information r
 Suggestions are most welcome!
 ```
 
-<b>Install dataMeta from GitHub (v0.1.1.9000) using devtools:</b>  
+<b>Install dataMeta from GitHub (v0.1.2) using devtools:</b>  
   
      last_update: ongoing
 ```
